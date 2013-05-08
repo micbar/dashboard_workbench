@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function dashboard_workbench_menu() {
+  $items['admin/workbench/dashboard'] = array(
+      'title' => 'Dashboard',
+      'page callback' => 'dashboard_admin',
+      'access arguments' => array('access workbench'),
+      'weight' => -20,
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'file' => 'dashboard.module',
+      'file path' => drupal_get_path('module', 'dashboard'),
+  );
+  return($items);
+
+
+}
+/**
+ * Implements hook_menu_alter().
+ */
+function dashboard_workbench_menu_alter(&$items) {
+
+  unset($items['admin/dashboard']);
+  $items['admin/workbench']['page callback'] = 'dashboard_admin';
+  $items['admin/workbench']['title'] = 'Dashboard';
+  $items['admin/workbench']['file'] = 'dashboard.module';
+  $items['admin/workbench']['file path'] = drupal_get_path('module', 'dashboard');
+  $items['admin/workbench/content']['type'] = MENU_LOCAL_TASK;
+  $items['admin/workbench/content']['title'] = 'My Workbench';
+}

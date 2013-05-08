@@ -1,0 +1,6 @@
+name = Dashboard Workbench Integration
+description = Integrates Dashboard into Workbench module.
+package = Workbench
+core = 7.x
+dependencies[] = workbench
+dependencies[] = dashboard
